@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="/styles/main.css" rel="stylesheet">
 
     <style>
         body {
@@ -26,7 +26,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
 
@@ -73,6 +73,13 @@
     </nav>
 
     @yield('content')
+
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted"><a href="https://github.com/zloadmin/simple_blog_laravel">Simple Blog Laravel 5.2</a></p>
+      </div>
+    </div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
