@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-
-
-Route::get('/post/{post}', 'PostController@show');
+// Route::get('/', 'PostController@index');
+// Route::get('/post/{post}', 'PostController@show');
 
 /*
 |--------------------------------------------------------------------------
@@ -27,13 +25,19 @@ Route::get('/post/{post}', 'PostController@show');
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::group(['middleware' => 'web'], function () {
-    Route::auth();
 
+    Route::auth();
     Route::get('/home', 'HomeController@index');
+
+    //Profile
+    Route::get('/profile', 'ProfileController@edit');
+    Route::post('/profile', 'ProfileController@update');
+
+    //Posts
+    Route::get('/', 'PostController@index');
+	Route::get('/post/{post}', 'PostController@show');
+
+	//Comments
 
 });

@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
     	factory('App\User', 100)->create();
     	factory('App\Post', 100)->create();
+        factory('App\Comment', 1000)->create();
     }
 }

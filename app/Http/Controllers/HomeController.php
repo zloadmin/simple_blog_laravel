@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Post;
 class HomeController extends Controller
 {
     /**
@@ -14,9 +11,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -24,8 +20,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(15);
-
-        return view('welcome', ['posts' => $posts]); 
+        return view('home');
     }
 }
