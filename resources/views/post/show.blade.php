@@ -30,37 +30,63 @@
 	        <!-- Comments Form -->
 
 	            <h4>Leave a Comment:</h4>
-	            <form role="form" id="addcomment" method="POST">
+	            <form role="form" id="addcomment" method="POST" action="/comment/create">
 	            	{!! csrf_field() !!}
 	                <div class="form-group">
 	                    <textarea class="form-control" rows="3" name="comment"></textarea>
 	                </div>
 	                <button type="submit" class="btn btn-primary pull-right">Submit</button>
+					<input type="hidden" name="post_id" value="{{ $post->id }}">
 	            </form>
 
 	        
         </div>
+
+		@if (count($errors) > 0)
+			<div class="alert alert-danger">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
 
         <hr>
 
         <h2>Coments</h2>
 
 		<hr>
-		<!-- Comments -->
-        <div id="comments">
-	        <div class="media">
-	            <a class="pull-left" href="#">
-	                <img class="media-object" src="http://placehold.it/64x64" alt="">
-	            </a>
-	            <div class="media-body">
-	                <h4 class="media-heading">Start Bootstrap
-	                    <small>August 25, 2014 at 9:30 PM</small>
-	                </h4>
-	                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-	            </div>
-	        </div>
-    	</div>
+		@if($comments)
+			<!-- Comments -->
+			<div id="comments">
+				@foreach($comments as $comment)
+					<div class="media">
+						<a class="pull-left" href="#">
+							<img class="media-object" src="http://placehold.it/64x64" alt="">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">{{ $comment->user->name }}
+								<small>{{ $comment->created_at->format('F j, Y, g:i a') }}</small>
+							</h4>
+							{{ $comment->comment }}
+						</div>
+					</div>
+					<hr>
+				@endforeach
+			</div>
 
+			<hr>
+
+			<div class="row pages">
+				<div class="text-center">
+					{!! $comments->links() !!}
+				</div>
+			</div>
+
+		@else
+			<!-- No Comments -->
+		@endif
 	</div>
 </div>
 @endsection

@@ -39,5 +39,10 @@ Route::group(['middleware' => 'web'], function () {
 	Route::get('/post/{post}', 'PostController@show');
 
 	//Comments
+    Route::group(['middleware' => 'auth'], function () {
+
+        Route::post('/comment/create', 'CommentController@create');
+
+    });
 
 });

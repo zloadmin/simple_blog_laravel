@@ -22,8 +22,8 @@ class PostController extends Controller
 	public function show($id) 
 	{
 		$post = Post::find($id);
-		var_dump($post);
-		return view('post.show', compact('post'));
+		$comments = $post->comments()->orderBy('created_at', 'desc')->paginate(5);
+		return view('post.show', compact('post', 'comments'));
 	}
 
 
