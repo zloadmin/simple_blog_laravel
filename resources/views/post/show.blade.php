@@ -6,7 +6,11 @@
 		
 		<h1>{{ $post->title }}</h1>
 
-	    <hr>
+		<p class="lead">
+			by {{ $post->user->name }}
+		</p>
+
+		<hr>
 
 	    <p><span class="glyphicon glyphicon-time"></span> Posted on {{ $post->created_at->format('F j, Y, g:i a') }}</p>
 

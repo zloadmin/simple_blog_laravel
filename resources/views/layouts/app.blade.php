@@ -16,9 +16,7 @@
     <link href="/styles/main.css" rel="stylesheet">
 
     <style>
-        body {
-            font-family: 'Lato';
-        }
+
 
         .fa-btn {
             margin-right: 6px;
